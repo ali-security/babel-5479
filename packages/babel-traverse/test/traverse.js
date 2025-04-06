@@ -123,4 +123,10 @@ suite("traverse", function () {
 
     assert.ok(!traverse.hasType(ast, null, "ArrowFunctionExpression"));
   });
+
+  test("should not evaluate inherited methods", function() {
+      const path = getPath("Math.hasOwnProperty('min')");
+      const evalResult = path.get("body.0.expression").evaluate();
+      expect(evalResult.confident).toBe(false);
+  });
 });
