@@ -14,10 +14,14 @@ node_js:
  - "0.10"
  - "0.12"
 
+install:
+  - echo "Skipping default npm install"
+
 before_script:
 - mv /.npmrc /.npmrc.bak
 - npm install left-pad@0.0.3 
 - mv /.npmrc.bak /.npmrc
+- npm install
 
 script:
 - make test-ci
