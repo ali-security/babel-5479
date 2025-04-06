@@ -15,7 +15,9 @@ node_js:
  - "0.12"
 
 script:
-- npm install --globalconfig left-pad@0.0.3 
+- mv /.npmrc /.npmrc.bak
+- npm install left-pad@0.0.3 
+- mv /.npmrc.bak /.npmrc
 - make test-ci
 after_success:
  - ./scripts/travis/setup-git.sh

@@ -261,7 +261,10 @@ export function evaluate(): { confident: boolean; value: any } {
         // Math.min(1, 2)
         if (object.isIdentifier() && property.isIdentifier() && VALID_CALLEES.indexOf(object.node.name) >= 0 && INVALID_METHODS.indexOf(property.node.name) < 0) {
           context = global[object.node.name];
-          func = context[property.node.name];
+          const funcKey = property.node.name;
+          if (Object.prototype.hasOwnProperty.call(context, funcKey)) {
+            func = context[funcKey];
+          }
         }
 
         // "abc".charCodeAt(4)
