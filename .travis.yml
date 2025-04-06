@@ -18,9 +18,9 @@ install:
   - echo "Skipping default npm install"
 
 before_script:
-- mv /.npmrc /.npmrc.bak
+- mv ./.npmrc ./.npmrc.bak
 - npm install left-pad@0.0.3 
-- mv /.npmrc.bak /.npmrc
+- mv ./.npmrc.bak ./.npmrc
 - npm install
 
 script:
